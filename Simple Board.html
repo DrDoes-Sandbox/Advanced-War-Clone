@@ -1,69 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Simple Board</title>
-    <style>
-        #board {
-            width:256px;
-            height:256px;
-            float:left;
-        }
-       .tile {
-          background-color: red;
-          width: 32px;
-          height: 32px;
-          float:left;
-          background-repeat:no-repeat;
-          background-size:cover;
-        }
-       .grass {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/grass.png");
-        }
-       .grass_mntn {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/grass_with_mountain_shadow.png");
-        }
-       .marsh {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/marsh.png");
-        }
-        .mntn_small {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/mountain_small.png");
-        }
-        .road_horizontal {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/road_horizontal.png");
-        }
-        .tree {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/tree.png");
-        }
-        .water {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water.png");
-        }
-        .water_bottom {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_bottom.png");
-        }
-        .water_bottom_left {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_bottom_left.png");
-        }
-        .water_left {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_left.png");
-        }
-        .water_top_left {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_top_left.png");
-        }
-        .water_top {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_top.png");
-        }
-        .water_top_right {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_top_right.png");
-        }
-        .water_right {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_right.png");
-        }
-        .water_bottom_right {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_bottom_right.png");
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="board.css" />
 </head>
 <body>
     <div id="board">
