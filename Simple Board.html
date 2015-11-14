@@ -1,145 +1,35 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Simple Board</title>
-    <style>
-        #board {
-            width:256px;
-            height:256px;
-            float:left;
-        }
-       .tile {
-          background-color: red;
-          width: 32px;
-          height: 32px;
-          float:left;
-          background-repeat:no-repeat;
-          background-size:cover;
-        }
-       .grass {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/grass.png");
-        }
-       .grass_mntn {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/grass_with_mountain_shadow.png");
-        }
-       .marsh {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/marsh.png");
-        }
-        .mntn_small {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/mountain_small.png");
-        }
-        .road_horizontal {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/road_horizontal.png");
-        }
-        .tree {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/tree.png");
-        }
-        .water {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water.png");
-        }
-        .water_bottom {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_bottom.png");
-        }
-        .water_bottom_left {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_bottom_left.png");
-        }
-        .water_left {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_left.png");
-        }
-        .water_top_left {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_top_left.png");
-        }
-        .water_top {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_top.png");
-        }
-        .water_top_right {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_top_right.png");
-        }
-        .water_right {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_right.png");
-        }
-        .water_bottom_right {
-          background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_bottom_right.png");
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="board.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="board_functions.js"></script>
+	<script> /*
+			 Move as much over to board_function.js
+			Create a Map Object that has 1. map_fields 2.Width 3.Height --Width & Height let the map_draw know when to loop to the next row.
+			Add arrow key comands to move around the map
+			*/
+			
+			//var map_level1;
+			
+			$(function(){
+			pos_x = 0;
+			pos_y = 0;
+			map_draw(map_level1,pos_x,pos_y);
+			//map_see(map_level1);
+	
+			//$("input").keypress(function(){
+      		//$("span").text(i += 1);
+			//When you use keypress, make sure that pos_x and pos_y can't be larger than map width/height
+			});
+			});
+</script>
 </head>
 <body>
-    <div id="board">
-        <!--Row 1-->
-        <div class="tile grass"></div>
-        <div class="tile mntn_small"></div>
-        <div class="tile grass_mntn"></div>
-        <div class="tile mntn_small"></div>
-        <div class="tile grass_mntn"></div>
-        <div class="tile tree"></div>
-        <div class="tile tree"></div>
-        <div class="tile water_left"></div>
-        <!--Row 2-->
-        <div class="tile water_top_left"></div>
-        <div class="tile water_top"></div>
-        <div class="tile water_top_right"></div>
-        <div class="tile water_top_left"></div>
-        <div class="tile water_top"></div>
-        <div class="tile water_top"></div>
-        <div class="tile water_top"></div>
-        <div class="tile marsh"></div>
-        <!--Row 3-->
-        <div class="tile water_left"></div>
-        <div class="tile marsh"></div>
-        <div class="tile water_right"></div>
-        <div class="tile water_left"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <!--Row 4-->
-        <div class="tile water_left"></div>
-        <div class="tile water"></div>
-        <div class="tile water_bottom_right"></div>
-        <div class="tile water_left"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <!--Row 5-->
-        <div class="tile water_left"></div>
-        <div class="tile water_bottom_right"></div>
-        <div class="tile tree"></div>
-        <div class="tile water_bottom_left"></div>
-        <div class="tile water_bottom"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <!--Row 6-->
-        <div class="tile water_left"></div>
-        <div class="tile water_top_right"></div>
-        <div class="tile grass"></div>
-        <div class="tile water_top_left"></div>
-        <div class="tile water_top"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <!--Row 7-->
-        <div class="tile water_left"></div>
-        <div class="tile water"></div>
-        <div class="tile water_top"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <div class="tile water"></div>
-        <div class="tile water_bottom"></div>
-        <div class="tile water_bottom"></div>
-        <!--Row 8-->
-        <div class="tile water_bottom_left"></div>
-        <div class="tile water_bottom"></div>
-        <div class="tile water_bottom"></div>
-        <div class="tile water_bottom"></div>
-        <div class="tile water_bottom"></div>
-        <div class="tile water_bottom_right"></div>
-        <div class="tile grass"></div>
-        <div class="tile grass"></div>
-
-    </div>
+    <div id="board"></div>
 </body>
+
 </html>
