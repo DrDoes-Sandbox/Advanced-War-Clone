@@ -3,7 +3,7 @@
             height:256px;
             float:left;
         }
-       .tile {
+        .tile {
           background-color: red;
           width: 32px;
           height: 32px;
@@ -17,6 +17,7 @@
        .grass_mntn {
           background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/grass_with_mountain_shadow.png");
         }
+       
        .marsh {
           background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/marsh.png");
         }
