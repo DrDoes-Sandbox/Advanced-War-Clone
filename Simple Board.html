@@ -7,21 +7,23 @@
     <link rel="stylesheet" type="text/css" href="board.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="board_functions.js"></script>
-	<script>
-			//$('#board').append('<div class ="tile grass">Hello</div>');
-			var layout_level1;
-			$(function(){
+	<script> /*
+			 Move as much over to board_function.js
+			Create a Map Object that has 1. map_fields 2.Width 3.Height --Width & Height let the map_draw know when to loop to the next row.
+			Add arrow key comands to move around the map
+			*/
 			
-			var pos_y = 3;
-			for(y = pos_y; y < (pos_y +8);y++){
-				for(x=0;x<8;x++){
-				//int a = y*8+x;*/
-					$('#board').append('<div class="tile '+layout_level1[y*8+x]+'"></div>');																  ;
-				}
-			}
+			//var map_level1;
+			
+			$(function(){
+			pos_x = 0;
+			pos_y = 0;
+			map_draw(map_level1,pos_x,pos_y);
+			//map_see(map_level1);
 	
-			$("input").keypress(function(){
-      		$("span").text(i += 1);
+			//$("input").keypress(function(){
+      		//$("span").text(i += 1);
+			//When you use keypress, make sure that pos_x and pos_y can't be larger than map width/height
 			});
 			});
 </script>

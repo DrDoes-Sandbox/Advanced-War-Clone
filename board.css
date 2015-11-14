@@ -1,6 +1,5 @@
         #board {
-            width:256px;
-            height:256px;
+            
             float:left;
         }
         .tile {
@@ -24,7 +23,7 @@
         .mntn_small {
           background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/mountain_small.png");
         }
-        .road_horizontal {
+        .road_h {
           background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/road_horizontal.png");
         }
         .tree {
