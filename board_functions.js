@@ -21,8 +21,8 @@ function map_draw(map_data, pos_x, pos_y) {
     		for(x=pos_x; x < (pos_x + 8);x++){
     					
     			i = map_data.width*y + x;
-    			$('#board').append('<div class="tile '+map_data.fields[i]+'"></div>');																  ;
-    		}
+    			$('#board').append('<div class="tile '+map_data.fields[i]+'"></div>');
+			}	
 			$('#board').append('<br />');
     	}
 }
@@ -33,7 +33,7 @@ function map_see(map_data) {
  			for(x=0; x < map_data.width;x++){
     					
  				i = map_data.width*y + x;
- 				$('#board').append('<div class="tile '+map_data.fields[i]+'"></div>');																  ;
+ 				$('#board').append('<div class="tile '+map_data.fields[i]+'"></div>');																 
 			}
 			$('#board').append('<br />');
  		}
