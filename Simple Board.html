@@ -1,32 +1,33 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Simple Board</title>
     <link rel="stylesheet" type="text/css" href="board.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="board_functions.js"></script>
-	<script> /*
-			 Move as much over to board_function.js
-			Add arrow key comands to move around the map
-			*/
-			
-			//var map_level1;
-			
-			$(function(){
-			pos_x = 1; 
-			pos_y = 0;
-			map_draw(map_level1,pos_x,pos_y); //Reveals an 8x8 of the map
-			//map_see(map_level1);			  //Reveals the entire map	
-			
-			//Working on adding key input
-			//$("input").keypress(function(){
-      		//$("span").text(i += 1);
-			//When you use keypress, make sure that pos_x and pos_y can't be larger than map width/height
-			//});
-			});
-</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="board_functions.js"></script>
+    <script>
+        /* Move as much over to board_function.js
+        Add arrow key comands to move around the map */
+        //var map_level1;
+
+        $(function () {
+            pos_x = 1;
+            pos_y = 0;
+
+            //Reveals an 8x8 of the map
+            map_draw(map_level1, pos_x, pos_y);
+            //map_see Reveals the entire map
+            //map_see(map_level1);
+
+            //Working on adding key input
+            //$("input").keypress(function(){
+            //$("span").text(i += 1);
+            //When you use keypress, make sure that pos_x and pos_y can't be larger than map width/height
+            //});
+        });
+    </script>
 </head>
 <body>
     <div id="board"></div>
