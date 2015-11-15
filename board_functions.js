@@ -29,10 +29,10 @@ var map_level1 = {
 function map_draw(map_data, pos_x, pos_y) {
     for(y = pos_y; y < (pos_y +8);y++){
         for(x=pos_x; x < (pos_x + 8);x++){
-    	    i = map_data.width*y + x;
-    		$('#board').append('<div class="tile '+map_data.fields[i]+'"></div>');
+            i= map_data.width*y + x;
+            $('#board').append('<div class="tile '+map_data.fields[i]+'"></div>');
         }	
-		$('#board').append('<br />');
+        $('#board').append('<br />');
     }
 }
 			
@@ -40,7 +40,7 @@ function map_draw(map_data, pos_x, pos_y) {
 function map_see(map_data) {
 	for(y = 0; y < map_data.height;y++){
  	    for(x=0; x < map_data.width;x++){
- 		    i = map_data.width*y + x;
+            i = map_data.width*y + x;
             $('#board').append('<div class="tile '+map_data.fields[i]+'"></div>');																 
         }
         $('#board').append('<br />');
