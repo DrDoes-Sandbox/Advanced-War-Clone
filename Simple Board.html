@@ -9,22 +9,22 @@
 	<script src="board_functions.js"></script>
 	<script> /*
 			 Move as much over to board_function.js
-			Create a Map Object that has 1. map_fields 2.Width 3.Height --Width & Height let the map_draw know when to loop to the next row.
 			Add arrow key comands to move around the map
 			*/
 			
 			//var map_level1;
 			
 			$(function(){
-			pos_x = 0;
+			pos_x = 1; 
 			pos_y = 0;
-			map_draw(map_level1,pos_x,pos_y);
-			//map_see(map_level1);
-	
+			map_draw(map_level1,pos_x,pos_y); //Reveals an 8x8 of the map
+			//map_see(map_level1);			  //Reveals the entire map	
+			
+			//Working on adding key input
 			//$("input").keypress(function(){
       		//$("span").text(i += 1);
 			//When you use keypress, make sure that pos_x and pos_y can't be larger than map width/height
-			});
+			//});
 			});
 </script>
 </head>
