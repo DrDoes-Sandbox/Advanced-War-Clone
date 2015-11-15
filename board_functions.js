@@ -38,8 +38,8 @@ function map_draw(map_data, pos_x, pos_y) {
 			
 //This draws the entire map, used for map creation.
 function map_see(map_data) {
-	for(y = 0; y < map_data.height;y++){
-	    for (x = 0; x < map_data.width; x++) {
+    for (y = 0; y < map_data.height; y++) {
+        for (x = 0; x < map_data.width; x++) {
 	        i = map_data.width * y + x;
 	        $('#board').append('<div class="tile ' + map_data.fields[i] + '"></div>');
         }
