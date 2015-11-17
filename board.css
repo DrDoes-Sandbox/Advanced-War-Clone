@@ -9,6 +9,15 @@
             background-repeat:no-repeat;
             background-size:cover;
         }
+        .unit {
+            width: 32px;
+            height: 32px;
+            float:left;
+            background-repeat:no-repeat;
+            background-size:cover;
+            position:absolute;
+        }
+        /*Field Images*/
        .grass {
             background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/grass.png");
         }
@@ -53,4 +62,17 @@
         }
         .water_bottom_right {
             background-image: url("https://s3-us-west-2.amazonaws.com/advance-war-clone/water_bottom_right.png");
+        }
+        /*Military Unit Images*/
+        .mech_left {
+            background-image: url("https://github.com/DrDoes-Sandbox/Advanced-War-Clone/blob/master/sprites/mech_left.png?raw=true");
+        }
+        .soldier_left {
+            background-image: url("https://github.com/DrDoes-Sandbox/Advanced-War-Clone/blob/master/sprites/soldier_left.png?raw=true");
+        }
+        .tank_left {
+            background-image: url("https://github.com/DrDoes-Sandbox/Advanced-War-Clone/blob/master/sprites/tank_left.png?raw=true");
+        }
+        .transport_heli_left {
+            background-image: url("https://github.com/DrDoes-Sandbox/Advanced-War-Clone/blob/master/sprites/transport_helicopter_left.png?raw=true");
         }
