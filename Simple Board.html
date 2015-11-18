@@ -13,15 +13,19 @@
         //var map_level1;
 
         $(function () {
-            pos_x = 1;
-            pos_y = 0;
+            pos_x = 2;
+            pos_y = 2;
 
-            //Reveals an 8x8 of the map
+            // Reveals an 8x8 of the map
+            /**/
             draw_map(level1_map, pos_x, pos_y);
-            //see_map Reveals the entire map
-            //see_map(level1_map);
-
-            draw_units()
+            draw_units(level1_placement, pos_x, pos_y);
+            /**/
+            // Reveals the entire map
+            /*
+            see_map(level1_map);
+            see_units(level1_placement);
+            */
 
             //Working on adding key input
             //$("input").keypress(function(){
@@ -33,6 +37,7 @@
 </head>
 <body>
     <div id="board"></div>
+    <div id="unit_layer"></div>
 </body>
 
 </html>
