@@ -22,53 +22,66 @@ var level1_map = [
         "road_h", "road_h", "road_h", "road_h"]//Row 10
 ];
 
-//Level 1 Unit Initilization
+//Level 1 Unit Initilization - Kept it as an object to remind myself I can use other keys.
 var level1_placement = {
-    team: ["ai","ai","ai","ai","ai"], //Determines if the unit should be left or right facing
-    type: ["soldier","soldier","transport","tank","tank"], //Determines stats and image
-    pos: [[2,3],[3,3],[5,5],[9,10],[8,10]]
+    type: [["e", "e", "e", "e", "e", "e", "e", "e", "e", "e"],
+        ["e", "e", "e", "e", "e", "e", "e", "e", "e", "e"],
+        ["e", "e", "e", "e", "e", "e", "e", "e", "e", "e"],
+        ["e", "e", "e", "e", "e", "e", "e", "e", "e", "e"],
+        ["e", "e", "e", "e", "e", "e", "e", "e", "e", "e"],
+        ["e", "e", "e", "e", "e", "e", "e", "e", "e", "e"],
+        ["e", "e", "e", "e", "e", "e", "e", "e", "e", "e"],
+        ["e", "e", "e", "e", "e", "e", "e", "e", "e", "transport_heli"],
+        ["e", "e", "e", "e", "e", "e", "e", "soldier", "soldier", "e"],
+        ["e", "e", "e", "e", "e", "e", "e", "tank", "tank", "e"]
+    ]
 };
 
 //Military Unit Objects
-var solider = {
-    image: "soldier_left",
-    health: 100
+var m_unit = {
+    soldier: {
+        image: "soldier_left" 
+    },
+    tank: {
+        image: "tank_left"
+    },
+    mech: {
+        image: "mech_left"
+    },
+    transport_heli: {
+        image: "transport_heli_left"
+    }
 };
 
-var tank = {
-    image: "tank_left",
-    health: 500
-};
-
-var mech = {
-    image: "mech_left",
-    health: 300
-};
-
-var transport_heli = {
-    image: "transport_heli_left",
-    health: 200
-};
-
-//draw_units - give each unit an UnitID
-
-function huhtest(type) {
-
-    return 
-}
-
-function draw_unit(unit_layout) {
-    for(i=0;i<unit_layout.team.length;i++)
-        var pic = unit_layout.type
-        $('#board').append('div class="unit ' + mech.image
-}
-
+//draw_units on the 8x8
 function draw_units(unit_layout, pos_x, pos_y) {
-    for(y = pos_y;y < (pos_y +8);y++){
-        if(unit_layout.pos)
-        for (x = pos_x; x < (pos_x + 8) ; x++) {
-            $('#board').append('<div class="unit ' + unit_layout[y][x] + '"></div>');
+    for (y = pos_y; y < (pos_y + 8); y++) {
+        for (x = pos_x; x < (pos_x + 8); x++) {
+            unit_type = unit_layout.type[y][x];
+            if (unit_type == "e") {
+                $('#unit_layer').append('<div class="unit"></div>');
+            }
+            else {
+                $('#unit_layer').append('<div class="unit ' + m_unit[unit_type].image + '"></div>');
+            }
         }
+        $('#unit_layer').append('<br />');
+    }
+}
+
+//reveal all units on level
+function see_units(unit_layout) {
+    for (y = 0; y < unit_layout.type.length; y++) {
+        for (x = 0; x < unit_layout.type[y].length; x++) {
+            unit_type = unit_layout.type[y][x];
+            if (unit_type == "e") {
+                $('#unit_layer').append('<div class="unit"></div>');
+            }
+            else {
+                $('#unit_layer').append('<div class="unit ' + m_unit[unit_type].image + '"></div>');
+            }
+        }
+        $('#unit_layer').append('<br />');
     }
 }
 
@@ -89,7 +102,7 @@ function see_map(field_layout) {
         for (x = 0; x < field_layout[y].length; x++) {
             var txt = y+","+x;
             $('#board').append('<div class="tile ' + field_layout[y][x] + '"></div>');
-            $('.tile:last').text(txt);
+            //$('.tile:last').text(txt);
         }
         $('#board').append('<br />');
     }
