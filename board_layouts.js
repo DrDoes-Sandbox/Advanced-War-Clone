@@ -1,8 +1,6 @@
-//2d array to define what the player has selecting, moving, or attacking
-var move_pos = [];
-var select_pos = [];
-var attack_pos = [];
-
+//This is a list of Global Variables
+var turn_num = 1;
+var current_team = 1;
 //I don't use this yet, only a thought.
 var field_info = {
     def: {
@@ -18,16 +16,20 @@ var field_info = {
     }
 };
 
-//Determines if the player selected "Wait" or "Attack" on the action_menu
-var action_menu_select = 0;
-var title_menu_select = 0;
+//Determines which option on a menu is selected. All menus are set to -1 when not in use.
+var menu_select = {
+    //Determines if the player selected "Wait" or "Attack" on the action_menu
+    action: 0,
+    title: 0
+};
 
-//Boolean to determine if an enemy unit is within range
-var attack_range = 0;
 
 //Button trackers. Ensures the key pressed does what is expected based on prior events.
-var button_event = -1;
-var button_title = 0;
+var button_phase = {
+    level: 0
+};
+
+var screen_type = 0; // Title Screen = 0 , Level Screen = 1
 
 //Upon loading a level the level's layout is stored in current_layout
 var current_layout = {};
@@ -64,13 +66,18 @@ var level1_layout = {
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}, {}, { image: 'transport_heli_left', max_hp: 8, cur_hp: 8, dmg: 2 }],
-    [{}, {}, {}, {}, {}, {}, {}, { image: 'soldier_left', max_hp: 10, cur_hp: 10, dmg: 3 }, { image: 'soldier_left', max_hp: 10, cur_hp: 10, dmg: 3 }, {}],
-    [{}, {}, {}, {}, {}, {}, {}, { image: 'tank_left', max_hp: 12, cur_hp: 12, dmg: 4 }, { image: 'tank_left', max_hp: 12, cur_hp: 12, dmg: 4 }, {}]
+    [{}, {}, {}, {}, {}, {}, {}, {}, {}, { team: 1, image: 'transport_heli_left', max_hp: 8, cur_hp: 8, dmg: 2, used: 0 }], //used is boolean to know if the player went this turn.
+    [{}, {}, {}, {}, {}, {}, {}, { team: 1, image: 'soldier_left', max_hp: 10, cur_hp: 10, dmg: 3, used: 0 }, { team: 1, image: 'soldier_left', max_hp: 10, cur_hp: 10, dmg: 3, used: 0 }, {}],
+    [{}, {}, {}, {}, {}, {}, {}, { team: 2, image: 'tank_left', max_hp: 12, cur_hp: 12, dmg: 4, used: 0 }, { team: 2, image: 'tank_left', max_hp: 12, cur_hp: 12, dmg: 4, used: 0 }, {}]
     ],
 
+    //x,y array to define what the player has selecting, moving, or attacking
     //Starting position of selector
-    start_pos: [3, 0]  //3rd position is the width of the level 
+    select_pos: [3, 0],  //3rd position is the width of the level
+    move_pos: [],
+    attack_pos: [],
+    //Boolean to determine if an enemy unit is within range
+    attack_range : 0
 
 };
 
@@ -99,19 +106,23 @@ var level2_layout = {
     ],
 
     unit: [
+    [{ team: 2, image: 'transport_heli_left', max_hp: 8, cur_hp: 8, dmg: 2, used: 0 }, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+    [{ team: 2, image: 'soldier_left', max_hp: 10, cur_hp: 10, dmg: 3, used: 0 }, { team: 2, image: 'soldier_left', max_hp: 10, cur_hp: 10, dmg: 3, used: 0 }, {}, {}, {}, {}, {}, {}, {}, {}],
+    [{ team: 2, image: 'tank_left', max_hp: 12, cur_hp: 12, dmg: 4, used: 0 }, { team: 2, image: 'tank_left', max_hp: 12, cur_hp: 12, dmg: 4, used: 0 }, {}, {}, {}, {}, {}, {}, {}, {}],
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
     [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}, {}, { image: 'transport_heli_left', max_hp: 8, cur_hp: 8, dmg: 2 }],
-    [{}, {}, {}, {}, {}, {}, {}, { image: 'soldier_left', max_hp: 10, cur_hp: 10, dmg: 3 }, { image: 'soldier_left', max_hp: 10, cur_hp: 10, dmg: 3 }, {}],
-    [{}, {}, {}, {}, {}, {}, {}, { image: 'tank_left', max_hp: 12, cur_hp: 12, dmg: 4 }, { image: 'tank_left', max_hp: 12, cur_hp: 12, dmg: 4 }, {}]
+    [{}, {}, {}, {}, {}, {}, {}, {}, {}, { team: 1, image: 'transport_heli_left', max_hp: 8, cur_hp: 8, dmg: 2, used: 0 }],
+    [{}, {}, {}, {}, {}, {}, {}, { team: 1, image: 'soldier_left', max_hp: 10, cur_hp: 10, dmg: 3, used: 0 }, { team: 1, image: 'soldier_left', max_hp: 10, cur_hp: 10, dmg: 3, used: 0 }, {}],
+    [{}, {}, {}, {}, {}, {}, {}, { team: 1, image: 'tank_left', max_hp: 12, cur_hp: 12, dmg: 4, used: 0 }, { team: 1,image: 'tank_left', max_hp: 12, cur_hp: 12, dmg: 4, used: 0 }, {}]
     ],
 
+    //x,y array to define what the player has selecting, moving, or attacking
     //Starting position of selector
-    start_pos: [6, 0]  //3rd position is the width of the level 
+    select_pos: [6, 4],  //3rd position is the width of the level
+    move_pos: [],
+    attack_pos: [],
+    attack_range: 0
 
 };

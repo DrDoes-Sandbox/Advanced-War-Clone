@@ -35,6 +35,11 @@
             color:white;
             float:left;
         }
+        #turn_info { /*Work on a better way to get this turn info into the proper position. Maybe make it the parent of the board?*/
+            position: absolute;
+            display:none;
+            left: 256px;
+        }
         .tile {
             background-color: red;
             width: 32px;
@@ -110,6 +115,10 @@
         }
         .transport_heli_left {
             background-image: url("https://github.com/DrDoes-Sandbox/Advanced-War-Clone/blob/master/sprites/transport_helicopter_left.png?raw=true");
+        }
+        /*Unit Faded to signify unit went this turn*/
+        .faded {
+            opacity: 0.4;
         }
         /*Selectors*/
         .selected {

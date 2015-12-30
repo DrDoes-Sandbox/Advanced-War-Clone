@@ -8,18 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="board_functions.js"></script>
     <script src="board_layouts.js"></script>
+    <script src="board_debugging.js"></script>
+    <script src="KeyInputs.js"></script>
     <script>
         $(function () {
-            // Reveals an 8x8 of the map
-            /*
-            draw_map(level1_map, pos_x, pos_y);
-            draw_units(level1_placement, pos_x, pos_y);
-            */
-            // Reveals the entire map
-            /**/
             keyinput();
             title_screen();
-            /**/
         });
     </script>
 </head>
@@ -29,6 +23,7 @@
     <div id="unit_layer"></div>
     <div id="action_menu"></div>
     <div id="unit_info"></div>
+    <div id="turn_info"></div>
     <!--<div id="move_range"></div> This will show the range a unit can move when grabbed.-->
     <!-- Find the coordinates of the unit tile (top,left) clicked on, and assign the coordinates to the menu
         If the unit tile coordinates are too close to the top or left to put the menu to the left, put the menu below or to the right -->
