@@ -1,9 +1,90 @@
         #board {
             float:left;
+            position: absolute;
         }
         #unit_layer {
             float:left;
             position:absolute;
+        }
+        #action_menu {
+            position:absolute;    
+            width: 96px;
+            height: 128px;
+            background-color: rosybrown;
+            background-size: cover;    
+            display:none;
+            float: left;
+        }
+        #unit_info {
+            position: absolute;
+            display:none;
+            left: 208px;
+            top: 250px;
+            width: 56px;
+            height: 72px;
+            background-color: rgba(40, 40, 40, 0.55);
+        }
+        #title_board {
+            position:absolute;
+            font-size:x-large;
+            text-align:center;
+            width:320px;
+            height:320px;
+            background-color: black;
+            background-size: cover;
+            color:white;
+            float:left;
+        }
+        #turn_info { /*Work on a better way to get this turn info into the proper position. Maybe make it the parent of the board?*/
+            position: absolute;
+            display:none;
+            left: 264px;
+            top: 10px;
+            width: 60px;
+            height: 32px;
+            background-color: rgba(235, 225, 32, 0.55);
+            outline-color: black;
+            outline-style: auto;
+            outline-width: 2px;
+            text-indent: 3px;
+        }
+        #field_info { /*Work on a better way to get this turn info into the proper position. Maybe make it the parent of the board?*/
+            position: absolute;
+            display:none;
+            left: 264px;
+            top: 250px;
+            width: 56px;
+            height: 72px;
+            background-color: rgba(40, 40, 40, 0.55);
+        }
+        .field_example {
+            position:relative;
+            left: 12px;
+            top: 2px;
+            width: 32px;
+            height: 32px;
+            background-size: cover;
+        }
+        .field_text {
+            position:relative;
+            text-align:center;
+            left: 6px;
+            top: 2px;
+            width: 50px;
+            height: 12px;
+            background-size: cover;
+            color: white;
+            text-wrap:none;
+        }
+        .field_title {
+            position:relative;
+            text-align:center;
+            left: 4px;
+            width: 48px;
+            height: 16px;
+            background-size: cover;
+            color: white;
+            text-wrap:none;
         }
         .tile {
             background-color: red;
@@ -19,6 +100,8 @@
             float:left;
             background-repeat:no-repeat;
             background-size:cover;
+            font-size:small;
+            text-align:end;
         }
         /*Field Images*/
        .grass {
@@ -79,4 +162,47 @@
         .transport_heli_left {
             background-image: url("https://github.com/DrDoes-Sandbox/Advanced-War-Clone/blob/master/sprites/transport_helicopter_left.png?raw=true");
         }
-        
+        /*Unit Faded to signify unit went this turn*/
+        .faded {
+            opacity: 0.4;
+        }
+        /*Selectors*/
+        .selected {
+            outline-color:blue;
+            outline-width:medium;
+            outline-style:auto;
+        }
+        .grabbed {
+            outline-color:blueviolet;
+            outline-width:thick;
+            outline-style:auto;
+        }
+        /*Action Menu Buttons*/
+        .action_button {
+            width:inherit;
+            height: 20px;
+            outline: 1px solid black;
+            text-align:center;
+            /*outline-style: */
+        }
+        .button_selected {
+            /*outline-color:chartreuse;
+            outline-width:thick;
+            outline-style:auto; */
+            color:chartreuse;
+            font-size:large;
+        }
+        .move_action_button {
+            
+        }
+        .attack_action_button {
+
+        }
+
+       /*Tests & WIP*/
+        .unit_stat {
+            width:inherit;
+            height: 20px;
+            text-align:center;
+            outline: 1px solid blue;
+        }
