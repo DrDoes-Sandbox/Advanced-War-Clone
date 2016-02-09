@@ -1,7 +1,8 @@
 //This is a list of Global Variables
 var turn_num = 1;
 var current_team = 1;
-//I don't use this yet, only a thought.
+var old_quadrant = 0;
+
 var field_info = {
     type: {
         grass: 'grass',
