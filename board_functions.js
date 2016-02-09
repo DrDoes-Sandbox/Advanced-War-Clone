@@ -9,11 +9,7 @@
 
 *****Bugs*****
 1. Fix Action Menu to pop up on the opposite side of the 'Day Counter'
-2. Vanishing Unit - Repro Steps
-    a. Select unit (Hit x).
-    b. Move unit to current position. (Hit x a second time)
-    c. You should now see a Action Menu. Hit 'c' to go back.
-    d. The selected unit is now undefined. 
+3. Exhausted units don't gray out after attacking.
 */
 
 //Shows the title screen.
@@ -247,8 +243,10 @@ function unit_restore() {
     var u = current_layout.unit;
     var s = current_layout.select_pos;
     var m = current_layout.move_pos;
-    u[s[1]][s[0]] = u[m[1]][m[0]];
-    u[m[1]][m[0]] = {}; 
+    var temp;
+    temp = u[m[1]][m[0]];
+    u[m[1]][m[0]] = {};
+    u[s[1]][s[0]] = temp;
     $('.selected').removeClass('' + u[s[1]][s[0]].image + ' faded');
     $('.unit:nth-of-type(' + div_counter(s) + ')').addClass('' + u[s[1]][s[0]].image + '');
     show_hp();
