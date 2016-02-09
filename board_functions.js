@@ -217,6 +217,7 @@ function keyinput() {
                 break;
         }
         if (screen_type == 1) {
+            move_ui_info(selected_quadrant());
             field_details();
             unit_details();
         }
@@ -393,4 +394,79 @@ function show_info() {
     $('#unit_info').show();
     $('#field_info').show();
     $('#turn_info').show();
+}
+
+function move_ui_info(quadrant) {
+    if (old_quadrant == 0) {
+
+        old_quadrant = quadrant;
+    }
+    else if (old_quadrant != quadrant){
+        switch (quadrant) {
+            case 1:
+                //alert('You moved from ' + old_quadrant + 'into ' + quadrant);
+                $('#turn_info').css('left', '12px');
+                break;
+            case 2:
+                //alert('You moved from ' + old_quadrant + 'into ' + quadrant);
+                $('#turn_info').css('left', '264px');
+                break;
+            case 3:
+                //alert('You moved from ' + old_quadrant + 'into ' + quadrant);
+                $('#field_info').css('left', '264px');
+                $('#unit_info').css('left', '208px');
+                break;
+            case 4:
+                //alert('You moved from ' + old_quadrant + 'into ' + quadrant);
+                $('#field_info').css('left', '12px');
+                $('#unit_info').css('left', '68px');
+                break;
+        }
+        old_quadrant = quadrant;
+    }
+}
+
+function selected_quadrant() {
+    switch (button_phase.level) {
+        case 4:
+        case 3:
+        case 0:
+            if ((current_layout.select_pos[0] > current_layout.select_pos[2] / 2 - 1) 
+                && (current_layout.select_pos[1] <= current_layout.field.length / 2 - 1)) {
+                return 1;
+            }
+            else if ((current_layout.select_pos[0] <= current_layout.select_pos[2] / 2 - 1)
+                && (current_layout.select_pos[1] <= current_layout.field.length / 2 - 1)) {
+                return 2;
+            }
+            else if ((current_layout.select_pos[0] <= current_layout.select_pos[2] / 2 - 1)
+                && (current_layout.select_pos[1] > current_layout.field.length / 2 - 1)) {
+                return 3;
+            }
+            else if ((current_layout.select_pos[0] > current_layout.select_pos[2] / 2 - 1)
+                && (current_layout.select_pos[1] > current_layout.field.length / 2 - 1)) {
+                return 4;
+            }
+            
+            break;
+        case 1:
+            if ((current_layout.move_pos[0] > current_layout.move_pos[2] / 2 - 1)
+                && (current_layout.move_pos[1] <= current_layout.field.length / 2 - 1)) {
+                return 1;
+            }
+            else if ((current_layout.move_pos[0] <= current_layout.move_pos[2] / 2 - 1)
+                && (current_layout.move_pos[1] <= current_layout.field.length / 2 - 1)) {
+                return 2;
+            }
+            else if ((current_layout.move_pos[0] <= current_layout.move_pos[2] / 2 - 1)
+                && (current_layout.move_pos[1] > current_layout.field.length / 2 - 1)) {
+                return 3;
+            }
+            else if ((current_layout.move_pos[0] > current_layout.move_pos[2] / 2 - 1)
+                && (current_layout.move_pos[1] > current_layout.field.length / 2 - 1)) {
+                return 4;
+            }
+            
+            break;
+    }
 }

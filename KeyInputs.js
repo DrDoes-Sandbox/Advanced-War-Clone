@@ -28,50 +28,6 @@ function left_arrow() {
             }
             break;
     }
-    switch (button_phase.level) {
-        case 4:
-        case 3:
-        case 0:
-            if (current_layout.select_pos[1] < current_layout.field.length / 2 - 1) {
-                if (current_layout.select_pos[0] < current_layout.select_pos[2] / 2) {
-                    $('#turn_info').css('left', '264px');
-                }
-            }
-            else if (current_layout.select_pos[1] == current_layout.field.length / 2 - 1) {
-                if (current_layout.select_pos[0] < current_layout.select_pos[2] / 2) {
-                    $('#turn_info').css('left', '264px');
-                    $('#field_info').css('left', '264px');
-                    $('#unit_info').css('left', '208px');
-                }
-            }
-            else {
-                if (current_layout.select_pos[0] < current_layout.select_pos[2] / 2) {
-                    $('#field_info').css('left', '264px');
-                    $('#unit_info').css('left', '208px');
-                }
-            }
-            break;
-        case 1:
-            if (current_layout.move_pos[1] < current_layout.field.length / 2 - 1) {
-                if (current_layout.move_pos[0] < current_layout.move_pos[2] / 2) {
-                    $('#turn_info').css('left', '264px');
-                }
-            }
-            else if (current_layout.move_pos[1] == current_layout.field.length / 2 - 1) {
-                if (current_layout.move_pos[0] < current_layout.move_pos[2] / 2) {
-                    $('#turn_info').css('left', '264px');
-                    $('#field_info').css('left', '264px');
-                    $('#unit_info').css('left', '208px');
-                }
-            }
-            else {
-                if (current_layout.move_pos[0] < current_layout.move_pos[2] / 2) {
-                    $('#field_info').css('left', '264px');
-                    $('#unit_info').css('left', '208px');
-                }
-            }
-            break;
-    }
 }
 
 function right_arrow() {
@@ -102,51 +58,6 @@ function right_arrow() {
             }
             break;
     }
-    switch (button_phase.level) {
-        case 4:
-        case 3:
-        case 0:
-            if (current_layout.select_pos[1] < current_layout.field.length / 2 - 1) {
-                if (current_layout.select_pos[0] > current_layout.select_pos[2] / 2) {
-                    $('#turn_info').css('left', '12px');
-                }
-            }
-            else if (current_layout.select_pos[1] == current_layout.field.length / 2 - 1) {
-                if (current_layout.select_pos[0] > current_layout.select_pos[2] / 2) {
-                    $('#turn_info').css('left', '12px');
-                    $('#field_info').css('left', '12px');
-                    $('#unit_info').css('left', '68px');
-                }
-            }
-            else {
-                if (current_layout.select_pos[0] > current_layout.select_pos[2] / 2) {
-                    $('#field_info').css('left', '12px');
-                    $('#unit_info').css('left', '68px');
-                }
-            }
-            break;
-        case 1:
-            if (current_layout.move_pos[1] < current_layout.field.length / 2 - 1) {
-                if (current_layout.move_pos[0] > current_layout.move_pos[2] / 2) {
-                    $('#turn_info').css('left', '12px');
-                }
-            }
-            else if (current_layout.move_pos[1] == current_layout.field.length / 2 - 1) {
-                if (current_layout.move_pos[0] > current_layout.move_pos[2] / 2) {
-                    $('#turn_info').css('left', '12px');
-                    $('#field_info').css('left', '12px');
-                    $('#unit_info').css('left', '68px');
-                }
-            }
-            else {
-                if (current_layout.move_pos[0] > current_layout.move_pos[2] / 2) {
-                    $('#field_info').css('left', '12px');
-                    $('#unit_info').css('left', '68px');
-                }
-            }
-            break;
-    }
-    
 }
 
 function up_arrow() {
@@ -185,26 +96,6 @@ function up_arrow() {
                         grabbed_draw(current_layout.attack_pos);
                     }
                     break;
-            }
-            break;
-    }
-    switch (button_phase.level) {
-        case 4:
-        case 3:
-        case 0:
-            if ($('#turn_info').css('left') == '264px' && current_layout.select_pos[0] > current_layout.select_pos[2] / 2 - 1) {
-                $('#turn_info').css('left', '12px');
-            }
-            else if ($('#turn_info').css('left') == '12px' && current_layout.select_pos[0] <= current_layout.select_pos[2] / 2 - 1) {
-                $('#turn_info').css('left', '264px');
-            }
-            break;
-        case 1:
-            if ($('#turn_info').css('left') == '264px' && current_layout.move_pos[0] > current_layout.move_pos[2] / 2 - 1) {
-                $('#turn_info').css('left', '12px');
-            }
-            else if ($('#turn_info').css('left') == '12px' && current_layout.move_pos[0] <= current_layout.move_pos[2] / 2 - 1) {
-                $('#turn_info').css('left', '264px');
             }
             break;
     }
@@ -248,30 +139,6 @@ function down_arrow() {
                         grabbed_draw(current_layout.attack_pos);
                     }
                     break;
-            }
-            break;
-    }
-    switch (button_phase.level) {
-        case 4:
-        case 3:
-        case 0:
-            if ($('#field_info').css('left') == '264px' && current_layout.select_pos[0] > current_layout.select_pos[2] / 2 - 1) {
-                $('#field_info').css('left', '12px');
-                $('#unit_info').css('left', '68px');
-            }
-            else if ($('#field_info').css('left') == '12px' && current_layout.select_pos[0] <= current_layout.select_pos[2] / 2 - 1) {
-                $('#field_info').css('left', '264px');
-                $('#unit_info').css('left', '208px');
-            }
-            break;
-        case 1:
-            if ($('#field_info').css('left') == '264px' && current_layout.move_pos[0] > current_layout.move_pos[2] / 2 - 1) {
-                $('#field_info').css('left', '12px');
-                $('#unit_info').css('left', '68px');
-            }
-            else if ($('#field_info').css('left') == '12px' && current_layout.move_pos[0] <= current_layout.move_pos[2] / 2 - 1) {
-                $('#field_info').css('left', '264px');
-                $('#unit_info').css('left', '208px');
             }
             break;
     }
